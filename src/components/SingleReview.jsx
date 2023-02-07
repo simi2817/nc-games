@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchCommentsByReviewId, fetchReviewById } from "../utils/api";
+import { fetchReviewById } from "../utils/api";
 import { Link } from "react-router-dom";
 import Comments from "./Comments";
 
@@ -10,7 +10,7 @@ const SingleReview = () => {
 
     const [selectedReview, setSelectedReview] = useState({});
     
-    const [commentsForSelectedReview, setCommentsForSelectedReview] = useState([]);
+    
 
     const [clickComments, setClickComments] = useState(false);
 
@@ -21,10 +21,9 @@ const SingleReview = () => {
     }
 
     useEffect(() => {
-        Promise.all([fetchReviewById(review_id), fetchCommentsByReviewId(review_id)])
-        .then(([reviewFromApi,commentsFromApi]) => {
+        fetchReviewById(review_id)
+        .then((reviewFromApi) => {
           setSelectedReview(reviewFromApi[0]);
-          setCommentsForSelectedReview(commentsFromApi)
         })
     },[review_id]);
 
@@ -49,7 +48,7 @@ const SingleReview = () => {
               Comments
             </button>
         </Link>
-        {clickComments ? (<Comments key={commentsForSelectedReview.comment_id} comments={commentsForSelectedReview}/>) : null }
+        {clickComments ? <Comments/> : null }
       </div>
       </div>
     )

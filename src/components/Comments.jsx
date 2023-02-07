@@ -1,7 +1,23 @@
+import { useEffect, useState } from "react";
+import { fetchCommentsByReviewId } from "../utils/api";
 import CommentCard from "./CommentCard";
+import { useParams } from "react-router-dom";
 
 
-const Comments = ({ comments }) => {
+const Comments = () => {
+
+  const [comments, setComments] = useState([]);
+
+  const { review_id } = useParams();
+
+  console.log(review_id);
+
+  useEffect(() => {
+    fetchCommentsByReviewId(review_id)
+    .then((commentsFromApi) => {
+      setComments(commentsFromApi);
+    })
+  },[review_id]);
   
   return (
     <div>
