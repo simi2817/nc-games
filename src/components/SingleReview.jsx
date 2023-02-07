@@ -31,7 +31,10 @@ const SingleReview = () => {
 
       return currReview;
     });
-    patchVoteReview(review_id);
+    patchVoteReview(review_id)
+    .catch((err) => {
+      console.log(err);
+    });
   }
 
   const minusVoteReview = () => {
@@ -40,7 +43,10 @@ const SingleReview = () => {
 
     return currReview;
   })
-  patchVoteReview(review_id);
+  patchVoteReview(review_id)
+  .catch((err) => {
+    console.log(err);
+  });
 }
 
     return (
