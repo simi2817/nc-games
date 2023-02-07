@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { fetchReviewById } from "../utils/api";
 import CommentCard from "./CommentCard";
 
@@ -10,6 +10,12 @@ const SingleReview = () => {
 
     const [selectedReview, setSelectedReview] = useState({});
 
+    const navigate = useNavigate();
+
+    const goBack = () => {
+      navigate(-1);
+    }
+
     useEffect(() => {
         fetchReviewById(review_id)
         .then((reviewFromApi) => {
@@ -18,6 +24,10 @@ const SingleReview = () => {
     },[review_id]);
 
     return (
+      <div>
+        <div style={{margin: 'left'}}>
+        <button onClick={goBack}>Back to Reviews</button>
+      </div>
       <div>
          <h3>{selectedReview.title}</h3>
          <img src={selectedReview.review_img_url} alt={selectedReview.title} width="500px"/>
@@ -28,6 +38,7 @@ const SingleReview = () => {
          <p>Votes: {selectedReview.votes} | Comments: {selectedReview.comment_count}</p>
          <button>vote</button>
           <CommentCard/>
+      </div>
       </div>
     )
 }
