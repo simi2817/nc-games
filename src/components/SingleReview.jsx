@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchReviewById } from "../utils/api";
-import CommentCard from "./CommentCard";
-
+import { Link } from "react-router-dom";
+import Comments from "./Comments";
 
 const SingleReview = () => {
 
     const { review_id } = useParams();
 
     const [selectedReview, setSelectedReview] = useState({});
+    
+    
+
+    const [clickComments, setClickComments] = useState(false);
 
     const navigate = useNavigate();
 
@@ -37,10 +41,17 @@ const SingleReview = () => {
          <p><i>{selectedReview.review_body}</i></p>
          <p>Votes: {selectedReview.votes} | Comments: {selectedReview.comment_count}</p>
          <button>vote</button>
-          <CommentCard/>
+         <br></br>
+         <br></br>
+        <Link to={`/reviews/${selectedReview.review_id}/comments`}>
+            <button onClick={() => setClickComments(current => !current)}>
+              Comments
+            </button>
+        </Link>
+        {clickComments ? <Comments/> : null }
       </div>
       </div>
     )
-}
+    }
 
 export default SingleReview;
