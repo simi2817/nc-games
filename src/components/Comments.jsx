@@ -10,8 +10,6 @@ const Comments = () => {
 
   const { review_id } = useParams();
 
-  console.log(review_id);
-
   useEffect(() => {
     fetchCommentsByReviewId(review_id)
     .then((commentsFromApi) => {
