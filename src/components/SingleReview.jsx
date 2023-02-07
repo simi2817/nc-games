@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchReviewById } from "../utils/api";
+import { fetchReviewById, patchVoteReview } from "../utils/api";
 import { Link } from "react-router-dom";
 import Comments from "./Comments";
 
@@ -9,8 +9,6 @@ const SingleReview = () => {
     const { review_id } = useParams();
 
     const [selectedReview, setSelectedReview] = useState({});
-    
-    
 
     const [clickComments, setClickComments] = useState(false);
 
@@ -27,6 +25,24 @@ const SingleReview = () => {
         })
     },[review_id]);
 
+    const addVoteReview = () => {
+      setSelectedReview((currReview) => {
+      currReview = {...currReview, votes: currReview.votes + 1};
+
+      return currReview;
+    });
+    patchVoteReview(review_id);
+  }
+
+  const minusVoteReview = () => {
+    setSelectedReview((currReview) => {
+    currReview = {...currReview, votes: currReview.votes - 1};
+
+    return currReview;
+  })
+  patchVoteReview(review_id);
+}
+
     return (
       <div>
         <div style={{margin: 'left'}}>
@@ -40,7 +56,7 @@ const SingleReview = () => {
          <p>Category: {selectedReview.category}</p>
          <p><i>{selectedReview.review_body}</i></p>
          <p>Votes: {selectedReview.votes} | Comments: {selectedReview.comment_count}</p>
-         <button>vote</button>
+         <button onClick={addVoteReview}>👍</button><button onClick={minusVoteReview}>👎</button>
          <br></br>
          <br></br>
         <Link to={`/reviews/${selectedReview.review_id}/comments`}>

@@ -22,3 +22,15 @@ export const fetchCommentsByReviewId = (review_id) => {
         return data.comments
     })
 }
+
+export const patchVoteReview = (review_id) => {
+    
+    const patchBody = {
+        inc_votes: 1
+    };
+
+    return ncgamesApi.patch(`/reviews/${review_id}`, patchBody)
+    .then(({ data }) => {
+        return data.review;
+    })
+}
