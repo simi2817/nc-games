@@ -14,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/reviews" element={<Reviews/>}></Route>
         <Route path="/reviews/:review_id" element={<SingleReview/>}></Route>
+        <Route path="/reviews/:review_id/comments" element={<SingleReview/>}></Route>
       </Routes>
     </div>
   );
