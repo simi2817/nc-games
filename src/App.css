@@ -5,3 +5,21 @@
 .ReviewCard {
   display: inline-block;
 }
+
+.login-image {
+  border-radius: 50%;
+  border: black solid;
+}
+
+.UserCard {
+  display: inline-block;
+}
+
+.user-images {
+  border-radius: 50%;
+  border: blueviolet solid;
+}
+
+.comment-success {
+  border: solid green;
+}

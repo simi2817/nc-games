@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchReviewById, patchVoteReview } from "../utils/api";
+import { fetchReviewById } from "../utils/api";
 import { Link } from "react-router-dom";
 import Comments from "./Comments";
+import VotesForReview from "./VotesForReview";
 
 const SingleReview = () => {
 
@@ -15,7 +16,7 @@ const SingleReview = () => {
     const navigate = useNavigate();
 
     const goBack = () => {
-      navigate(-1);
+      navigate('/reviews');
     }
 
     useEffect(() => {
@@ -24,30 +25,6 @@ const SingleReview = () => {
           setSelectedReview(reviewFromApi[0]);
         })
     },[review_id]);
-
-    const addVoteReview = () => {
-      setSelectedReview((currReview) => {
-      currReview = {...currReview, votes: currReview.votes + 1};
-
-      return currReview;
-    });
-    patchVoteReview(review_id)
-    .catch((err) => {
-      console.log(err);
-    });
-  }
-
-  const minusVoteReview = () => {
-    setSelectedReview((currReview) => {
-    currReview = {...currReview, votes: currReview.votes - 1};
-
-    return currReview;
-  })
-  patchVoteReview(review_id)
-  .catch((err) => {
-    console.log(err);
-  });
-}
 
     return (
       <div>
@@ -61,8 +38,8 @@ const SingleReview = () => {
          <p>Owner: {selectedReview.owner}</p>
          <p>Category: {selectedReview.category}</p>
          <p><i>{selectedReview.review_body}</i></p>
-         <p>Votes: {selectedReview.votes} | Comments: {selectedReview.comment_count}</p>
-         <button onClick={addVoteReview}>👍</button><button onClick={minusVoteReview}>👎</button>
+         <p>Comments: {selectedReview.comment_count}</p>
+        <VotesForReview votes={selectedReview.votes} review_id={review_id}/>
          <br></br>
          <br></br>
         <Link to={`/reviews/${selectedReview.review_id}/comments`}>
@@ -70,7 +47,7 @@ const SingleReview = () => {
               Comments
             </button>
         </Link>
-        {clickComments ? <Comments/> : null }
+        {clickComments ? <Comments setSelectedReview={setSelectedReview}/> : null }
       </div>
       </div>
     )
