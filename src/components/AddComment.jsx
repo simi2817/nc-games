@@ -26,6 +26,13 @@ const AddComment = ({ review_id, setComments, setSelectedReview, comments }) => 
                 setComments((currComments) => {
                     return [commentFromApi, ...currComments];
                 });
+            })
+            .catch((err) => {
+                console.log(err);
+                alert('something went wrong! please try again...');
+                setLoading(false);
+                if(newComment)
+                    setNewComment('');
             });
 
             setSelectedReview((currReview) => {
