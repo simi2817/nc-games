@@ -5,9 +5,8 @@ const CommentCard = ({ comment }) => {
     <div>
         <h5>{comment.author}</h5>
         <p>{comment.body}</p>
-        <p>votes: {comment.votes}</p>
         <button>
-        vote</button>
+        ❤️ {comment.votes}</button>
     </div>
   )
 }
