@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import DeleteComment from "./DeleteComment";
 
-const CommentCard = ({ comment }) => {
+const CommentCard = ({ comment, setSelectedReview }) => {
 
   const userValue = useContext(UserContext);
  
@@ -19,7 +19,7 @@ const CommentCard = ({ comment }) => {
         {loggedInUser === comment.author ? (
         <button onClick={() => setDeleteStatus(true)}>delete</button>
         ) : null}
-        {deleteStatus ? <DeleteComment comment_id={comment.comment_id} setDeleteStatus={setDeleteStatus}/> : null}
+        {deleteStatus ? <DeleteComment comment_id={comment.comment_id} setDeleteStatus={setDeleteStatus} setSelectedReview={setSelectedReview}/> : null}
     </div>
   )
 }

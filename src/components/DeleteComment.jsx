@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { deleteComment } from "../utils/api";
 
+import loadingCircle from '../loading-circle.gif';
 
-
-const DeleteComment = ({ comment_id, setDeleteStatus }) => {
+const DeleteComment = ({ comment_id, setDeleteStatus, setSelectedReview }) => {
 
   const [deleting, setDeleting] = useState(true);
 
@@ -12,6 +12,12 @@ const DeleteComment = ({ comment_id, setDeleteStatus }) => {
     .then(() => {
       setDeleteStatus(false);
       setDeleting(false);
+      setSelectedReview((currReview) => {
+        const updatedReview = {...currReview, comment_count: currReview.comment_count - 1};
+    
+        return updatedReview;
+      });
+
       alert('comment deleted successfully!');
     })
     .catch((err) => {
@@ -20,10 +26,16 @@ const DeleteComment = ({ comment_id, setDeleteStatus }) => {
       setDeleting(false);
     });
 
-    if(deleting)
-    alert('request in progress....')
-    
-  },[comment_id, setDeleteStatus]);
+  },[comment_id, setDeleteStatus, setSelectedReview]);
+
+
+  if(deleting) {
+  return (
+    <div>
+      <img src={loadingCircle} alt="page is loading" width="20px"></img>
+    </div>
+  )
+  }
 
   return (
     <></>
