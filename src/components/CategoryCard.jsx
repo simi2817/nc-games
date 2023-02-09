@@ -13,7 +13,7 @@ const CategoryCard = ({ category }) => {
         <h3><u>{category.slug}</u></h3>
         <p><i>{category.description}</i></p>
         <Link to={`/reviews?category=${category.slug}`}>
-        <button onClick={() => setClickCategory(true)}>Go!</button>
+        <button onClick={() => setClickCategory(true)}>Explore!</button>
         </Link>
         {clickCategory ? 
         (<Reviews/>) : null}

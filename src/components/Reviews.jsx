@@ -3,7 +3,7 @@ import { useState } from "react";
 import { fetchAllReviews } from "../utils/api";
 import ReviewCard from "./ReviewCard";
 import loadingCircle from '../loading-circle.gif';
-
+import { useSearchParams } from "react-router-dom";
 
 const Reviews = () => {
   
@@ -13,9 +13,28 @@ const Reviews = () => {
 
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sortValue, setSortValue] = useState('');
+  const [order, setOrder] = useState('');
+  let [searchParams, setSearchParams] = useSearchParams();
+
+  const sortReviews = (event) => {
+     const queryValue = event.target.value;
+     const newParams = new URLSearchParams(searchParams);
+     newParams.set('sort_by',queryValue);
+     setSearchParams(newParams);
+     setSortValue(queryValue);
+    
+  }
+
+  const orderReviews = (value) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set('order',value);
+    setSearchParams(newParams);
+    setOrder(value);
+  }
 
   useEffect(() => {
-      fetchAllReviews(category)
+      fetchAllReviews(category,sortValue,order)
       .then((fetchedReviews) => {
         setReviews(fetchedReviews);
         setLoading(false);
@@ -25,7 +44,7 @@ const Reviews = () => {
         alert("something went wrong! please try again...");
         setLoading(false);
       })
-  },[category]);
+  },[category,sortValue,order]);
 
   if(loading) {
     return (
@@ -36,11 +55,21 @@ const Reviews = () => {
   }
   return (
     <div>
+      <div>
+        <select onClick={sortReviews}>
+          <option value="votes">Most voted</option>
+          <option value="created_at">Recent reviews</option>
+          <option value="comment_count">Top Comments</option>
+          <option value="title">Title</option>
+        </select>
+      </div>
+      <div>
+        <button onClick={() => orderReviews('asc')}>⬇</button><button onClick={() => orderReviews('desc')}>⬆</button>
+      </div>
       {reviews.map((review) => {
         return <ReviewCard key={review.review_id} review={review}/>
       })}
     </div>
   )
 }
-
 export default Reviews;
