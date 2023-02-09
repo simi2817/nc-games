@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import DeleteComment from "./DeleteComment";
+import VotesForComment from "./VotesForComment";
 
 const CommentCard = ({ comment, setSelectedReview }) => {
 
@@ -14,8 +15,7 @@ const CommentCard = ({ comment, setSelectedReview }) => {
     <div>
         <h5>{comment.author}</h5>
         <p>{comment.body}</p>
-        <button>
-        ❤️ {comment.votes}</button>
+        <VotesForComment votes={comment.votes} comment_id={comment.comment_id}/>
         {loggedInUser === comment.author ? (
         <button onClick={() => setDeleteStatus(true)}>delete</button>
         ) : null}

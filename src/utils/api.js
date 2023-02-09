@@ -70,3 +70,15 @@ export const fetchCategories = () => {
 export const deleteComment = (comment_id) => {
     return ncgamesApi.delete(`/comments/${comment_id}`);
 }
+
+export const patchVoteComment = (comment_id, vote) => {
+    
+    const patchBody = {
+        inc_votes: vote
+    };
+
+    return ncgamesApi.patch(`/comments/${comment_id}`, patchBody)
+    .then(({ data }) => {
+        return data.review;
+    });
+}
