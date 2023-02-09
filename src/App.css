@@ -1,9 +1,80 @@
 .App {
   text-align: center;
+  padding: 2px;
+  background-image: url('background.jpeg');
+  height: 100vh;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 80px;
+  background-image: url('nav-background.jpg');
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('nav-background.jpg');
+}
+
+.navBarLink {
+  margin: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: rgb(46, 46, 46);
+  transition: 0.3s ease-in-out;
+  padding: 2px;
+}
+
+.navBarLink:hover {
+  color:rgba(3, 40, 121, 0.918);
+}
+
+div {
+  background-image: url('background.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: rgba(245, 245, 245, 0.74);
+
+}
+
+.home-container {
+  display: inline-block;
+  font-size: 40px; 
+}
+
+.typed {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typing;
+  animation-duration: 2.5s;
+  animation-timing-function: steps(30, end);
+  animation-fill-mode: forwards;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 42px rgb(138, 150, 146), 0 0 82px rgb(138, 150, 146),0 0 92px rgb(138, 150, 146);
+	color: white;
+	font-size: 30px;
+	text-align: center;	
+}
+
+@keyframes typing {
+  from { 
+    width: 0;
+  }
+  to { 
+    width: 100%;
+ }
 }
 
 .ReviewCard {
   display: inline-block;
+  padding: 20px;
 }
 
 .login-image {
@@ -13,6 +84,7 @@
 
 .UserCard {
   display: inline-block;
+  padding: 20px;
 }
 
 .user-images {
@@ -22,4 +94,27 @@
 
 .comment-success {
   border: solid green;
+}
+
+.CategoryCard {
+  border: solid grey;
+  border-radius: 100px;
+  border-width: 3px;
+}
+
+button {
+  background-color: #385269;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+button:hover {
+  color:rgb(46, 46, 46);
 }

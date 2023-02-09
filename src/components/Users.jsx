@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchAllUsers } from "../utils/api";
 import UserCard from "./UserCard";
 import { useNavigate } from "react-router-dom";
+import loadingCircle from '../loading-circle.gif';
 
 const Users = () => {
 
@@ -25,7 +26,7 @@ const Users = () => {
   if(loading) {
     return (
       <div>
-        <p>users are loading.... please wait</p>
+        <img src={loadingCircle} alt="page is loading" width="100px"></img>
       </div>
     )
   }
