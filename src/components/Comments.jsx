@@ -25,7 +25,7 @@ const Comments = ({ setSelectedReview }) => {
       </div>
       <div>
       {comments.map((comment) => {
-        return <CommentCard key={comment.comment_id} comment={comment}/>
+        return <CommentCard key={comment.comment_id} comment={comment} setSelectedReview={setSelectedReview}/>
       })}
       </div>
     </div>
