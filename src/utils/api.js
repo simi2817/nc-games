@@ -2,10 +2,12 @@ import axios from 'axios';
 
 const ncgamesApi = axios.create({ baseURL: 'https://silverfox-ncgames.onrender.com/api' });
 
-export const fetchAllReviews = (category) => {
+export const fetchAllReviews = (category, sortValue, order) => {
     return ncgamesApi.get('/reviews', {
         params: {
-            category: category
+            category: category,
+            sort_by: sortValue,
+            order: order
         },
     })
     .then(({ data }) => {
