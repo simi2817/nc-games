@@ -66,3 +66,7 @@ export const fetchCategories = () => {
         return data.categories;
     })
 }
+
+export const deleteComment = (comment_id) => {
+    return ncgamesApi.delete(`/comments/${comment_id}`);
+}
