@@ -4,6 +4,8 @@ import { fetchReviewById } from "../utils/api";
 import { Link } from "react-router-dom";
 import Comments from "./Comments";
 import VotesForReview from "./VotesForReview";
+import loadingCircle from '../loading-circle.gif';
+import ErrorPage from "./ErrorPage";
 
 const SingleReview = () => {
 
@@ -12,6 +14,8 @@ const SingleReview = () => {
     const [selectedReview, setSelectedReview] = useState({});
 
     const [clickComments, setClickComments] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
     const navigate = useNavigate();
 
@@ -20,11 +24,34 @@ const SingleReview = () => {
     }
 
     useEffect(() => {
+        setError('');
         fetchReviewById(review_id)
         .then((reviewFromApi) => {
           setSelectedReview(reviewFromApi[0]);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setError(err.message);
+          setLoading(false);
         })
     },[review_id]);
+
+    if(loading) {
+      return (
+        <div>
+          <img src={loadingCircle} alt="page is loading" width="100px"></img>
+        </div>
+      )
+    }
+
+    if(error) {
+      return (
+        <>
+        <ErrorPage/>
+        </>
+      )
+    }
 
     return (
       <div>
