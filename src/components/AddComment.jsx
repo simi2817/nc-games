@@ -16,7 +16,7 @@ const AddComment = ({ review_id, setComments, setSelectedReview, comments }) => 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(newComment.length === 0) {
+        if(newComment.length === 0 || /^\s*$/.test(newComment)) {
             alert('Comment box is empty!');
             setLoading(false);
         }         
@@ -26,6 +26,7 @@ const AddComment = ({ review_id, setComments, setSelectedReview, comments }) => 
                 setComments((currComments) => {
                     return [commentFromApi, ...currComments];
                 });
+                setNewComment('');
             })
             .catch((err) => {
                 console.log(err);
@@ -64,7 +65,7 @@ const AddComment = ({ review_id, setComments, setSelectedReview, comments }) => 
         <br></br>
         <button onClick={() => setLoading(true)}>Add</button>
         {loading ? <p>please wait ...</p> : null}
-        {submitted ? <p className="comment-success">comment successfully submitted!</p> : null}
+        {submitted ? <p>comment successfully submitted!</p> : null}
     </form>
     </div>
   )

@@ -92,10 +92,6 @@ div {
   border: blueviolet solid;
 }
 
-.comment-success {
-  border: solid green;
-}
-
 .CategoryCard {
   border: solid grey;
   border-radius: 100px;
