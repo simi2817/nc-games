@@ -2,7 +2,11 @@
   text-align: center;
   padding: 20px;
   background-image: url('background.jpeg');
-  height: 100vh;
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 nav {
@@ -18,7 +22,6 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('nav-background.jpg');
 }
 
 .navBarLink {
@@ -32,16 +35,11 @@ nav {
 }
 
 .navBarLink:hover {
-  color:rgba(3, 40, 121, 0.918);
+  color:rgba(8, 218, 183, 0.918);
 }
 
 div {
-  background-image: url('background.jpeg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   color: rgba(245, 245, 245, 0.74);
-
 }
 
 .home-container {
@@ -77,6 +75,18 @@ div {
   padding: 20px;
 }
 
+.button-reviewcard {
+  background-color: #385269;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 .login-image {
   border-radius: 50%;
   border: black solid;
@@ -93,30 +103,63 @@ div {
 }
 
 .CategoryCard {
-  border: solid grey;
+  /* border: solid grey;
   border-radius: 100px;
-  border-width: 3px;
+  border-width: 3px; */
+  display: inline-block;
+
 }
 
 button {
-  background-color: #385269;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
+  border-radius: 5px;
+  padding: 2px;
+  background-color: grey;;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 2px;
   cursor: pointer;
+  color: white;
 }
 
 button:hover {
-  color:rgb(46, 46, 46);
+  color:rgba(146, 212, 179, 0.918);
 }
 
 .error {
   text-align: center;
   margin-top: 200px;
   border: solid whitesmoke;
+}
+
+.dropdown {
+  padding: 20px;
+  float: right;
+}
+
+.select {
+  padding: 1px;
+  text-align: center;
+  color:rgb(46, 46, 46);
+  background-color:rgb(228, 228, 228);
+  border: 1px solid whitesmoke;
+  cursor: pointer;
+  border-radius: 5px;
+  
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.select:focus,
+.select:hover {
+  outline: none;
+  border: 1px solid white;
+}
+
+.select option {
+  background: rgb(228, 228, 228);
+}
+
+.sorting-button {
+  border-radius: 5px;
 }

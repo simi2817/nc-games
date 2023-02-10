@@ -10,7 +10,7 @@ const ReviewCard = ({ review }) => {
         <p><i>{review.title}</i></p>
         <p>Votes: {review.votes} | Comments: {review.comment_count}</p>
         <Link to={`/reviews/${review.review_id}`}>
-        <button>Read more</button>
+        <button className="button-reviewcard">Read more</button>
         </Link>
     </div>
   )

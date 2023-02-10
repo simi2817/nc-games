@@ -56,16 +56,15 @@ const Reviews = () => {
   }
   return (
     <div>
-      <div>
-        <select onClick={sortReviews}>
+      <div className="dropdown">
+        <select className="select" onClick={sortReviews}>
+          <option disabled selected>Sort by</option>
           <option value="votes">Most voted</option>
           <option value="created_at">Recent reviews</option>
           <option value="comment_count">Top Comments</option>
           <option value="title">Title</option>
         </select>
-      </div>
-      <div>
-        <button onClick={() => orderReviews('asc')}>⬇</button><button onClick={() => orderReviews('desc')}>⬆</button>
+        <button className="sorting-button" onClick={() => orderReviews('asc')}>⬇</button><button className="sorting-button" onClick={() => orderReviews('desc')}>⬆</button>
       </div>
       {reviews.map((review) => {
         return <ReviewCard key={review.review_id} review={review}/>
