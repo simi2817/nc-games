@@ -16,6 +16,7 @@ const Reviews = () => {
   const [sortValue, setSortValue] = useState('');
   const [order, setOrder] = useState('');
   let [searchParams, setSearchParams] = useSearchParams();
+  
 
   const sortReviews = (event) => {
      const queryValue = event.target.value;
@@ -40,7 +41,7 @@ const Reviews = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.data.message);
         alert("something went wrong! please try again...");
         setLoading(false);
       })
