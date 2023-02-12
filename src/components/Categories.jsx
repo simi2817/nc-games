@@ -31,7 +31,7 @@ const Categories = ({ setCategory }) => {
       }
 
   return (
-    <div>
+    <div className="category-container">
         {categories.map((category) => {
             return <CategoryCard key={category.slug} category={category} setCategory={setCategory}/>
         })}

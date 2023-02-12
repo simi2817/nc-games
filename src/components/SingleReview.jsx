@@ -65,7 +65,7 @@ const SingleReview = () => {
          <p>Owner: {selectedReview.owner}</p>
          <p>Category: {selectedReview.category}</p>
          <p><i>{selectedReview.review_body}</i></p>
-         <p>Comments: {selectedReview.comment_count}</p>
+         <p>💬 {selectedReview.comment_count}</p>
         <VotesForReview votes={selectedReview.votes} review_id={review_id}/>
          <br></br>
          <br></br>

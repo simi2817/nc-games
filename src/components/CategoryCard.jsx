@@ -10,9 +10,9 @@ const CategoryCard = ({ category }) => {
 
   return (
     <div className="CategoryCard">
-        <h3><u>{category.slug}</u></h3>
+        <p className="category-slug">{category.slug}</p>
         <p><i>{category.description}</i></p>
-        <Link to={`/reviews?category=${category.slug}`}>
+        <Link className="explore-category" to={`/reviews?category=${category.slug}`}>
         <button onClick={() => setClickCategory(true)}>Explore!</button>
         </Link>
         {clickCategory ? 

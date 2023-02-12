@@ -65,7 +65,7 @@ const AddComment = ({ review_id, setComments, setSelectedReview, comments }) => 
         <br></br>
         <button onClick={() => setLoading(true)}>Add</button>
         {loading ? <p>please wait ...</p> : null}
-        {submitted ? <p>comment successfully submitted!</p> : null}
+        {submitted ? <p className="comment-submitted">comment successfully submitted!</p> : null}
     </form>
     </div>
   )

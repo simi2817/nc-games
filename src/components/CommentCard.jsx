@@ -12,12 +12,12 @@ const CommentCard = ({ comment, setSelectedReview }) => {
   const [deleteStatus, setDeleteStatus] = useState(false);
 
   return (
-    <div>
-        <h5>{comment.author}</h5>
-        <p>{comment.body}</p>
+    <div className="commentCard">
+        <h5 className="comment-author">{comment.author}</h5>
+        <p className="comment-body">{comment.body}</p>
         <VotesForComment votes={comment.votes} comment_id={comment.comment_id}/>
         {loggedInUser === comment.author ? (
-        <button onClick={() => setDeleteStatus(true)}>delete</button>
+        <button className="delete-comment" onClick={() => setDeleteStatus(true)}>❌remove</button>
         ) : null}
         {deleteStatus ? <DeleteComment comment_id={comment.comment_id} setDeleteStatus={setDeleteStatus} setSelectedReview={setSelectedReview}/> : null}
     </div>

@@ -4,6 +4,7 @@ import { fetchAllReviews } from "../utils/api";
 import ReviewCard from "./ReviewCard";
 import loadingCircle from '../loading-circle.gif';
 import { useSearchParams } from "react-router-dom";
+import ScrollToTop from "./ScrollToTop";
 
 const Reviews = () => {
   
@@ -66,9 +67,12 @@ const Reviews = () => {
         </select>
         <button className="sorting-button" onClick={() => orderReviews('asc')}>⬇</button><button className="sorting-button" onClick={() => orderReviews('desc')}>⬆</button>
       </div>
+      <div className="reviews">
       {reviews.map((review) => {
         return <ReviewCard key={review.review_id} review={review}/>
       })}
+      </div>
+      <ScrollToTop/>
     </div>
   )
 }

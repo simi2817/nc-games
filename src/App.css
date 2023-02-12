@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 .App {
   text-align: center;
   padding: 20px;
@@ -7,6 +9,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
 nav {
@@ -70,9 +74,55 @@ div {
  }
 }
 
-.ReviewCard {
-  display: inline-block;
+.reviews {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   padding: 20px;
+}
+
+.ReviewCard {
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  grid-template-columns: 50% 50%;
+  padding: 50px;
+  margin: 15px;
+  border-radius: 20px;
+  width: 700px;
+  background-color: rgba(180, 178, 175, 0.253);
+  cursor: pointer;
+}
+
+.ReviewCard:hover {
+  background-color: rgb(16, 31, 65);
+  color: rgb(131, 113, 10);
+}
+
+.review-img {
+  grid-column: 1;
+  grid-row: 1/5;
+  width: 90%;
+  border-radius: 30px;
+}
+
+.review-owner {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.review-title {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.review-votes {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.read-more {
+  grid-column: 2;
+  grid-row: 4;
 }
 
 .button-reviewcard {
@@ -92,8 +142,13 @@ div {
   border: black solid;
 }
 
+.users {
+  display: flex;
+  justify-content: center;
+}
+
 .UserCard {
-  display: inline-block;
+  /* display: inline-block; */
   padding: 20px;
 }
 
@@ -103,12 +158,39 @@ div {
 }
 
 .CategoryCard {
-  /* border: solid grey;
-  border-radius: 100px;
-  border-width: 3px; */
-  display: inline-block;
-
+  display: grid;
+  padding: 50px;
+  margin: 15px;
+  border-radius: 20px;
+  width: 700px;
+  background-color: rgba(180, 178, 175, 0.253);
+  cursor: pointer;
 }
+
+.CategoryCard:hover {
+  background-color: rgb(16, 31, 65);
+  color: rgb(131, 113, 10);
+}
+
+.category-slug {
+  border:#385269 solid;
+  margin: auto;
+  padding: 5px;
+  background-color: aliceblue;
+  color: rgb(34, 34, 34);
+  box-shadow: 20px 20px 50px 10px pink inset;
+}
+
+.category-container {
+  display: flex;
+  flex-wrap:wrap-reverse;
+  justify-content: center;
+}
+
+/* .explore-category {
+  grid-row: 2;
+  grid-column: 2;
+} */
 
 button {
   border-radius: 5px;
@@ -162,4 +244,70 @@ button:hover {
 
 .sorting-button {
   border-radius: 5px;
+}
+
+.commentCard {
+  display: grid;
+  grid-template-rows: 60% 40%;
+  grid-template-columns: 25% 75%;
+  padding: 5px;
+  margin: 15px;
+  border-radius: 20px;
+  width: 500px;
+  background-color: rgba(180, 178, 175, 0.253);
+}
+
+.comments {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.comment-author {
+  grid-column: 1;
+  grid-row: 1;
+  border: solid rgb(34, 34, 34);
+  margin:auto;
+  padding: 10px;
+  border-radius: 35%;
+  background-color: aliceblue;
+  color: rgb(34, 34, 34);
+  text-align: center;
+}
+
+.comment-body {
+  grid-column: 2;
+  grid-row: 1;
+  margin: auto;
+  padding: 10px;
+}
+
+.vote-comments {
+  background-color: transparent;
+  grid-column: 2;
+  grid-row: 2;
+
+}
+
+.vote-reviews {
+  background-color: transparent;
+  grid-row: 2;
+  grid-column: 1;
+  margin: auto;
+}
+
+.delete-comment {
+  background-color: transparent;
+  border: 0;
+}
+
+.comment-submitted {
+  animation: fadeOut;
+  animation-duration: 5s;
+}
+
+@keyframes fadeOut {
+  from {opacity: 1;}
+  to {opacity: 0;}
 }

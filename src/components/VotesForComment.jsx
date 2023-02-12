@@ -20,10 +20,10 @@ const VotesForComment = ({ votes, comment_id }) => {
 
   return (
     <div>
-        <p>Votes: {votes}</p>
-        <button disabled={votesChange === 1} onClick={() => updateVotes(1)}>
+        <p>👍 {votes}</p>
+        <button className="vote-comments" disabled={votesChange === 1} onClick={() => updateVotes(1)}>
         ❤️</button>
-        <button disabled={votesChange === -1} onClick={() => updateVotes(-1)}>
+        <button className="vote-comments" disabled={votesChange === -1} onClick={() => updateVotes(-1)}>
         💔</button>
     </div>
   )

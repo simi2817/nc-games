@@ -31,11 +31,15 @@ const Users = () => {
     )
   }
   return (
+    <div>
       <div>
-      <button onClick={goBack}>Back</button>
+        <button onClick={goBack}>Back</button>
+      </div>
+      <div className="users"> 
       {users.map((user) => {
         return <UserCard key={user.username} user={user}/>
       })}
+    </div>
     </div>
   )
 }

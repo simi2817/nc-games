@@ -21,7 +21,7 @@ const VotesForReview = ({ votes, review_id }) => {
   return (
     <div>
         <p>Votes: {votes + votesChange}</p>
-        <button disabled={votesChange === 1} onClick={() => updateVotes(1)}>👍</button><button disabled={votesChange === -1} onClick={() => updateVotes(-1)}>👎</button>
+        <button className="vote-reviews" disabled={votesChange === 1} onClick={() => updateVotes(1)}>👍</button><button className="vote-reviews" disabled={votesChange === -1} onClick={() => updateVotes(-1)}>👎</button>
     </div>
   )
 }
