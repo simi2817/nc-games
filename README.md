@@ -2,7 +2,7 @@
 
 Welcome to the games review webiste! 
 
-This repo links to my backend API - https://silverfox-ncgames.onrender.com/api to get data consisting of categories, reviews, users and comments related to games like dexterity, strategy, hidden-roles, etc. 
+This repo links to my [backend API](https://silverfox-ncgames.onrender.com/api) to get data consisting of categories, reviews, users and comments related to games like dexterity, strategy, hidden-roles, etc. 
 
 Each category has a list of game card where the user can view the review along with its list of comments. 
 
