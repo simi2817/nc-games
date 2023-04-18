@@ -30,3 +30,4 @@ The website is deployed on Netlify - [nc-games website](https://silverfox-ncgame
 * Able to click on each review which displays the review and related comments.
 * User can leave a comment or remove a comment.
 * User can up-vote or down-vote review or comments.
+* User can sort the reviews as per most voted, recent and top comments ascending or descending.
